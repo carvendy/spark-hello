@@ -1,0 +1,9 @@
+The first line defines a base RDD from an external file. 
+This dataset is not loaded in memory or otherwise acted on: 
+lines is merely a pointer to the file. The second line defines 
+lineLengths as the result of a map transformation. Again,
+lineLengths is not immediately computed, 
+due to laziness. Finally, we run reduce, which is an action. 
+At this point Spark breaks the computation into tasks to run on separate machines,
+and each machine runs both its part of the map and a local reduction, 
+returning only its answer to the driver program.

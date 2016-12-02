@@ -51,6 +51,10 @@ object TestCount {
          
     println(result.collect().mkString(","))
     //result.saveAsTextFile("d:/data_new")
+   /**
+    *  saveAsObjectFile(序列化)
+    */
+    
    /* var list =  result.collect()
     for(l <- list){
       println(l)

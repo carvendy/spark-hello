@@ -4,6 +4,11 @@ import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
 
 object TestList {
+  
+  /**
+   * http://www.aboutyun.com/forum-146-8.html
+   */
+  
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setMaster("local").setAppName("hello")
     val sc = new SparkContext(conf)
@@ -72,7 +77,7 @@ object TestList {
 
     println("rdd-count:" + rdd.count());
     /**
-     *  reduceRdd (累加)，不要用foreach
+     *  reduceRdd (里面写fun)，不要用foreach
      */
     val reduceRdd = sc.parallelize(List(1, 2, 3, 4, 5))
     println(reduceRdd.reduce(_ + _))
@@ -91,9 +96,15 @@ object TestList {
      */
     println("loolup:")
     val loolup = rddCountByKey.lookup("a");
-    for (l <- loolup.seq) {
+    /*for (l <- loolup.seq) {
       println(l)
-    }
+    }*/
+    
+    /**
+     * foreach
+     */
+    loolup.foreach { x => println(x) }
+    
 
     sc.stop()
   }

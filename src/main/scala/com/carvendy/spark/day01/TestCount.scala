@@ -9,6 +9,12 @@ object TestCount {
   
   val filePath = "count.txt";
   
+  
+  /**
+   * 
+   * http://spark.apache.org/docs/latest/programming-guide.html#transformations
+   * 
+   */
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf()
    // conf.setMaster("spark://kvm-5-118:7077")
@@ -28,6 +34,12 @@ object TestCount {
      */
     val url = TestCount.getClass.getClassLoader.getResource(filePath);
     val textFile = sc.textFile(url.getFile)
+    val temp = textFile.flatMap(line => line.split("\\s+"))
+    /**
+     * flatMap 键相同并存
+     */
+    println("flatMap:"+temp.collect().mkString("#"))
+    
     val result = textFile.flatMap(line => line.split("\\s+"))
         .map(word => (word, 1))
         //.filter(2)
@@ -39,10 +51,11 @@ object TestCount {
          
     println(result.collect().mkString(","))
     //result.saveAsTextFile("d:/data_new")
-    var list =  result.collect()
+   /* var list =  result.collect()
     for(l <- list){
       println(l)
-    }
+    }*/
+    
     sc.stop();
   }
 }

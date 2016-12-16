@@ -30,6 +30,7 @@
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
 			<version>${scala.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Test -->
@@ -58,6 +59,7 @@
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-core_${scala.compat.version}</artifactId>
 			<version>2.0.0</version>
+			<scope>provided</scope>
 			<exclusions>
 				<exclusion>
 					<artifactId>javax.servlet</artifactId>
@@ -136,20 +138,6 @@
 					</executions>
 				</plugin>
 				
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-					<configuration>
-						<mainClass>com.youboy.member.MainApp</mainClass>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>repackage</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
 		</plugins>
 	</build>
 </project>

@@ -34,6 +34,10 @@ object TestCount {
      */
     val url = TestCount.getClass.getClassLoader.getResource(filePath);
     val textFile = sc.textFile(url.getFile)
+    textFile.cache()
+    //textFile.foreach { x => println(x) }
+    //println("-----------------------------------")
+    
     val temp = textFile.flatMap(line => line.split("\\s+"))
     /**
      * flatMap 键相同并存
@@ -44,9 +48,9 @@ object TestCount {
         .map(word => (word, 1))
         //.filter(2)
         //.filterByRange("b", "c")
-        .reduceByKey(_ + _) // 合并数据
+        .reduceByKey(_ + _) // 通过键合并数据，并进行累加
          .map(x=>(x._2, x._1))// 键值互换
-         .sortByKey(false)// true 为升序,fals为降序
+         .sortByKey(true)// true 为升序,fals为降序
          .map(x=>(x._2,x._1))
          
     println(result.collect().mkString(","))

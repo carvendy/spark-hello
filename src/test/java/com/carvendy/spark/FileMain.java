@@ -11,17 +11,17 @@ import org.junit.Test;
 public class FileMain {
 	
 	public static void main(String[] args) throws IOException {
-		File file = new File("/tmp/test-spark-data1.txt");
+		File file = new File("/tmp/test-spark-data10.txt");
 
 		char a = 'a';
 		Random random = new Random();
 		StringBuffer sb  = new StringBuffer();
 		for(long i = 0 ; i < 10000*1000;i++){
-			int num = random.nextInt(26);
-			char ch = (char)(a + num);
+			char ch = getLetter(a, random);
 			
 			int count = random.nextInt(2000);
 			for(int j =0 ; j < count; j++){
+				ch = getLetter(a, random);
 				sb = sb.append(ch+",");
 			}
 			sb = sb.append(ch+"\n");
@@ -31,6 +31,12 @@ public class FileMain {
 			}
 		}
 		System.out.println("over");
+	}
+
+	private static char getLetter(char a, Random random) {
+		int num = random.nextInt(26);
+		char ch = (char)(a + num);
+		return ch;
 	}
 	
 }

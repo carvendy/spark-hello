@@ -3,28 +3,30 @@ package com.carvendy.spark.day04
 import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
 
-object Run01 {
-  
+object RunTxt {
   
   def main(args: Array[String]): Unit = {
-    
      var start = System.currentTimeMillis()
      val conf = new SparkConf()
-      conf.setMaster("local")
+      conf.setMaster("local[*]")
           .setAppName("hello")
       val sc = new SparkContext(conf)
      
-     var  txtRdd = sc.textFile("/tmp/test-spark-data2.txt")
-     var end = System.currentTimeMillis()
-     println("lines:"+txtRdd.count()+",read-time:"+(end-start))
+     var  txtRdd = sc.textFile("hdfs://kvm-5-118:9000/tmp/test-spark-data1.txt")
+     sc.parallelize(txtRdd.collect(), 2)
      
+     var end = System.currentTimeMillis()
+     var readTime = end-start
      start = System.currentTimeMillis()
-     var  rdd = txtRdd.map ( x => x.split(",") )
+     var  rdd = txtRdd.flatMap ( x => x.split(",") )
        .filter { x => x.contains("a") };
-      end = System.currentTimeMillis()
-      println("a-count:"+rdd.count()+",read-time:"+(end-start))
-      
+     var lines = txtRdd.count() 
+     var count = rdd.count()
      sc.stop()
+     
+     end = System.currentTimeMillis()
+     println("lines:"+lines+",time:"+readTime)
+     println("a-count:"+count+",time:"+(end-start))
   }
   
 

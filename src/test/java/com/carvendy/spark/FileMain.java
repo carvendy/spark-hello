@@ -11,7 +11,7 @@ import org.junit.Test;
 public class FileMain {
 	
 	public static void main(String[] args) throws IOException {
-		File file = new File("/tmp/data.txt");
+		File file = new File("/tmp/test-spark-data1.txt");
 
 		char a = 'a';
 		Random random = new Random();

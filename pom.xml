@@ -105,6 +105,7 @@
 							<configuration>
 								<includes>
 									<include>**/*.scala</include>
+									<include>**/*.java</include>
 								</includes>
 							</configuration>
 						</execution>
@@ -113,6 +114,12 @@
 							<goals>
 								<goal>testCompile</goal>
 							</goals>
+							<configuration>
+								<includes>
+									<include>**/*.scala</include>
+									<include>**/*.java</include>
+								</includes>
+							</configuration>
 						</execution>
 					</executions>
 				</plugin>

@@ -1,9 +1,6 @@
-# # spark-hello
-spark 学习日记 #
+##spark 学习日记 #
 
-
-## 
-RunTxt ##
+##RunTxt ##
 
 读取文件（大小）,查找a个数测试：
 

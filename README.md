@@ -26,3 +26,7 @@
 	  10g 
 	  	lines:5380004,time:14378
 		a-count:5309760,time:204326
+##
+	2g
+		lines:680002,time:10604
+		a-count:26328471,time:11332

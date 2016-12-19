@@ -6,14 +6,19 @@ import org.apache.spark.SparkContext
 object RunTxt {
   
   def main(args: Array[String]): Unit = {
+    var num = 1
+    if(args.length > 0){
+      num = args(0).toInt
+    }
+    
      var start = System.currentTimeMillis()
      val conf = new SparkConf()
-      conf.setMaster("local[*]")
+      //conf.setMaster("local[*]")
           .setAppName("hello")
-          .set("spark.driver.maxResultSize", "4g")
+          //.set("spark.driver.maxResultSize", "4g")
       val sc = new SparkContext(conf)
      
-     val  txtRdd = sc.textFile("hdfs://kvm-5-118:9000/tmp/test-spark-data1.txt")
+     val  txtRdd = sc.textFile("hdfs://kvm-5-118:9000/tmp/test-spark-data"+num+".txt")
     // val txtRdd2 = sc.parallelize(txtRdd.collect(), 2)
      
      var end = System.currentTimeMillis()

@@ -13,7 +13,7 @@ import org.apache.hadoop.hdfs.protocol.DatanodeInfo;
 
 public class HDFSTest {
 	public static void main(String[] args) throws Exception {
-		 uploadLocalFile2HDFS("D:/tmp/test-spark-data2.txt","/tmp/test-spark-data2.txt");//E盘下文件传到hdfs上
+		 //uploadLocalFile2HDFS("D:/tmp/test-spark-data1.txt","/tmp/test-spark-data1.txt");//E盘下文件传到hdfs上
 		// uploadLocalFile2HDFS("D:/tmp/product/ids.txt","/tmp/ids.txt");//E盘下文件传到hdfs上
 		// createNewHDFSFile("/tmp/create2", "hello");
 		// String str = new String(readHDFSFile("/tmp/create2"));
